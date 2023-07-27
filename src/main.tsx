@@ -7,6 +7,7 @@ import {
 import "./styles.css";
 import Home from "./routes/home";
 import Settings from "./routes/settings";
+import {PullRequestsContextProvider} from "./contexts/pull-requests-context.tsx";
 
 const router = createBrowserRouter([
     {
@@ -20,7 +21,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <RouterProvider router={router}/>
-  </React.StrictMode>,
+    <React.StrictMode>
+        <PullRequestsContextProvider>
+            <RouterProvider router={router}/>
+        </PullRequestsContextProvider>
+    </React.StrictMode>,
 );

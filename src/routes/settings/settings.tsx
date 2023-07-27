@@ -8,12 +8,14 @@ import {Container} from "./settings.styled.tsx";
 import AddRepo from "./components/add-repo";
 import IRepository, {Repositories} from "../../typedefs/repositories.ts";
 import RepositoriesList from "./components/repositories-list";
+import {useUpdatePrs} from "../../contexts/pull-requests-context.tsx";
 
 const Settings = () => {
     const [token, setToken] = useInputState<string>('');
     const [repositories, setRepositories] = useState<Repositories>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const debouncedToken = useDebounce(token, 500)
+    const updatePRs = useUpdatePrs();
 
     useEffect(() => {
         getAppConfig().then(config => {
@@ -39,7 +41,9 @@ const Settings = () => {
                 data.repositories = []
             }
             data.repositories = [...data.repositories, repo];
-            saveAppConfig(data)
+            saveAppConfig(data).then(() => {
+                updatePRs()
+            })
             setRepositories(data.repositories);
         })
     }
@@ -47,7 +51,9 @@ const Settings = () => {
     const removeRepo = (repo: IRepository) => {
         getAppConfig().then(data => {
             data.repositories = data.repositories.filter(({url}) => url !== repo.url);
-            saveAppConfig(data)
+            saveAppConfig(data).then(() => {
+                updatePRs()
+            })
             setRepositories(data.repositories)
         })
     }

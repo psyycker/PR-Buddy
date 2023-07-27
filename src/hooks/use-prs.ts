@@ -53,8 +53,8 @@ const countNewPRs = (repositoriesList: IRepositoryResponse[], lastCheckedDate: D
 
 const usePrs = () => {
     const {token, isLoading: isTokenLoading} = useToken();
-    const {repositories, isLoading: isReposLoading} = useRepositories();
-    const [pullRequests, setPullRequests] = useState<IRepositoryResponse[]>([])
+    const {repositories, isLoading: isReposLoading, refresh: refreshRepositories} = useRepositories();
+    const [repositoryResponses, setRepositoryResponses] = useState<IRepositoryResponse[]>([])
     const [lastCheckDate, setLastCheckDate] = useState<undefined|Date>()
 
     const isLoading = isTokenLoading || isReposLoading
@@ -118,7 +118,7 @@ const usePrs = () => {
                 .filter(node => !isDraft(node))
                 .sort(sort)
         }
-        setPullRequests(allData)
+        setRepositoryResponses(allData)
         if (lastCheckDate == null) {
             setLastCheckDate(new Date())
         } else {
@@ -144,7 +144,9 @@ const usePrs = () => {
 
     return {
         isLoading,
-        pullRequests
+        repositories: repositoryResponses,
+        updatePRs,
+        refreshRepositories
     }
 }
 

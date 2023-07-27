@@ -4,7 +4,6 @@
 use tauri::{SystemTray, SystemTrayMenu, SystemTrayEvent};
 use tauri::Manager;
 use tauri_plugin_positioner::{Position, WindowExt};
-use tauri::ActivationPolicy;
 
 extern {
     fn LSSetApplicationHidden(hidden: bool);

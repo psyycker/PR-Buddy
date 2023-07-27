@@ -1,7 +1,7 @@
 import {IPullRequest, IRepositoryResponse} from "../typedefs/pull-request.ts";
 import {useEffect, useState} from "react";
 
-const useTabContent = (selectedTab: 'All' | {repo: string; owner: string}, repositories: IRepositoryResponse[]) => {
+const useTabContent = (selectedTab: 'All' | string, repositories: IRepositoryResponse[]) => {
     const [content, setContent] = useState<IPullRequest[]>([])
     const [isLoading, setIsLoading] = useState(true);
 
@@ -12,7 +12,7 @@ const useTabContent = (selectedTab: 'All' | {repo: string; owner: string}, repos
             }, [])
             setContent(merged)
         } else {
-            const found = repositories.find(repo => repo.repository.owner.login === selectedTab.owner && repo.repository.name === selectedTab.repo)
+            const found = repositories.find(repo => repo.repository.url === selectedTab)
             if (found != null) {
                 setContent(found.repository.pullRequests.nodes)
             }

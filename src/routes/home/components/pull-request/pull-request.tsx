@@ -7,7 +7,7 @@ import {
     Author,
     Separator,
     UpSideContainer,
-    SideBySideContainer, HalfWidthContainer, Approvals
+    SideBySideContainer, HalfWidthContainer, HalfContainerContent, HalfContainerTitle
 } from "./pull-request.styled.tsx";
 import {useMemo} from "react";
 import * as dateFns from 'date-fns'
@@ -46,19 +46,19 @@ const PullRequest = ({pullRequest}: Props) => {
             <UpSideContainer>
                 <Title>
                     {pullRequest.title}
-                    <Author> by {pullRequest.author.login}</Author>
                 </Title>
+                <Author> by {pullRequest.author.login}</Author>
                 <LastModified>Last modified: {mostRecentEditionDate}</LastModified>
             </UpSideContainer>
             <Separator/>
             <SideBySideContainer>
                 <HalfWidthContainer>
-                    <span>Approvals</span>
-                    <Approvals>{approvalsCount}</Approvals>
+                    <HalfContainerTitle>Approvals</HalfContainerTitle>
+                    <HalfContainerContent>{approvalsCount}</HalfContainerContent>
                 </HalfWidthContainer>
                 <HalfWidthContainer>
-                    <span>Comments</span>
-                    <Approvals>{commentsCount}</Approvals>
+                    <HalfContainerTitle>Comments</HalfContainerTitle>
+                    <HalfContainerContent>{commentsCount}</HalfContainerContent>
                 </HalfWidthContainer>
             </SideBySideContainer>
         </Container>

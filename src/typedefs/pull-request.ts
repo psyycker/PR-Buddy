@@ -25,6 +25,7 @@ export interface IRepositoryResponse {
         owner: {
             login: string;
         }
+        url: string;
         pullRequests: {
             nodes: IPullRequest[]
         }

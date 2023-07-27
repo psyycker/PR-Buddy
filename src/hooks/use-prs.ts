@@ -75,6 +75,7 @@ const usePrs = () => {
                         login
                     }
                     name
+                    url
                     pullRequests(states: OPEN, last: 100) {
                         nodes {
                             number

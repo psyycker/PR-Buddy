@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -7,27 +7,26 @@ export const Container = styled.div`
   flex-direction: row;
   border-bottom: 1px solid white;
   position: fixed;
-  margin-top: 20px;
-  background-color: #2f2f2f;
+  margin-top: 50px;
+`;
+
+const selectedTabStyle = css`
+  border-bottom: 2px solid #339bf0;
 `;
 
 export const Tab = styled.div<{selected: boolean}>`
   height: 25px;
   padding: 10px;
-  border-left: 1px solid grey;
   display: flex;
   justify-content: center;
   align-items: center;
   white-space: nowrap;
+  background-color: white;
   
-  background-color: ${({selected}) => selected && '#3f3f3f'};
-
-  &:last-child {
-    border-right: 1px solid grey;
-  }
+  ${({selected}) => selected && selectedTabStyle}
 
   &:hover {
-    background-color: #3f3f3f;
     cursor: pointer;
+    background-color: rgb(248, 249, 250);
   }
 `

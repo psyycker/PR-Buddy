@@ -49,10 +49,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 800,
         "resizable": false,
         "title": "menubar",
-        "width": 600,
+        "width": 500,
         "visible": false,
         "hiddenTitle": true,
         "decorations": false,

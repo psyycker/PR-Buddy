@@ -5,12 +5,3 @@ export const Container = styled.div`
   flex-direction: column;
   width: 100%;
 `
-
-export const SettingsContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  position: fixed;
-  right: 10px;
-  background-color: #2f2f2f;
-`;

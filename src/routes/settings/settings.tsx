@@ -3,12 +3,12 @@ import {useInputState} from "@mantine/hooks";
 import {useEffect, useState} from "react";
 import {getAppConfig, saveAppConfig} from "../../utils/fs-utils.ts";
 import {useDebounce} from "usehooks-ts";
-import {Link} from "react-router-dom";
-import {Container} from "./settings.styled.tsx";
+import {Container, Content} from "./settings.styled.tsx";
 import AddRepo from "./components/add-repo";
 import IRepository, {Repositories} from "../../typedefs/repositories.ts";
 import RepositoriesList from "./components/repositories-list";
 import {useUpdatePrs} from "../../contexts/pull-requests-context.tsx";
+import Header from "../../components/header";
 
 const Settings = () => {
     const [token, setToken] = useInputState<string>('');
@@ -62,12 +62,14 @@ const Settings = () => {
 
     return (
         <Container>
-            <Link to="/">Back</Link>
-            Settings
-            <TextInput value={token} onInput={setToken} placeholder="Github token"/>
-            <AddRepo submitRepo={addRepo}/>
-            <h4>Repositories</h4>
-            <RepositoriesList removeRepo={removeRepo} repositories={repositories}/>
+            <Header actionButtonLabel="Confirm" actionButtonDest="/"/>
+            <Content>
+                <span>Github Token</span>
+                <TextInput value={token} onInput={setToken} placeholder="Github token"/>
+                <AddRepo submitRepo={addRepo}/>
+                <h4>Repositories</h4>
+                <RepositoriesList removeRepo={removeRepo} repositories={repositories}/>
+            </Content>
         </Container>
     )
 };

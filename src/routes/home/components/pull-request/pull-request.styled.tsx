@@ -2,11 +2,15 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  width: 100%;
+  width: 95%;
+  margin: 15px auto 0 auto;
   flex-direction: column;
-  margin-top: 10px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+
   &:hover {
-    background-color: #3f3f3f;
+    background-color: rgb(231, 244, 254);
     cursor: pointer;
   }
 `;
@@ -26,7 +30,7 @@ export const Title = styled.span`
 
 export const LastModified = styled.span`
   font-size: 12px;
-  color: #e8e8e8;
+  color: black;
 `;
 
 export const SideBySideContainer = styled.div`
@@ -45,7 +49,15 @@ export const HalfWidthContainer = styled.div`
   }
 `;
 
-export const Approvals = styled.span``;
+export const HalfContainerContent = styled.span`
+  margin-bottom: 10px;
+`;
+
+export const HalfContainerTitle = styled.h4`
+  color: #339bf0;
+  font-weight: bold;
+  margin: 10px 0;
+`;
 
 export const Comments = styled.span``;
 

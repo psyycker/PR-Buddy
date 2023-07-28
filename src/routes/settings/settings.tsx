@@ -42,7 +42,7 @@ const Settings = () => {
             }
             data.repositories = [...data.repositories, repo];
             saveAppConfig(data).then(() => {
-                updatePRs()
+                updatePRs(true)
             })
             setRepositories(data.repositories);
         })
@@ -52,7 +52,7 @@ const Settings = () => {
         getAppConfig().then(data => {
             data.repositories = data.repositories.filter(({url}) => url !== repo.url);
             saveAppConfig(data).then(() => {
-                updatePRs()
+                updatePRs(true)
             })
             setRepositories(data.repositories)
         })
@@ -65,7 +65,7 @@ const Settings = () => {
             <Header actionButtonLabel="Confirm" actionButtonDest="/"/>
             <Content>
                 <span>Github Token</span>
-                <TextInput value={token} onInput={setToken} placeholder="Github token"/>
+                <TextInput type="password" value={token} onInput={setToken} placeholder="Github token"/>
                 <AddRepo submitRepo={addRepo}/>
                 <h4>Repositories</h4>
                 <RepositoriesList removeRepo={removeRepo} repositories={repositories}/>

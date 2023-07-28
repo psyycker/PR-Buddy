@@ -137,6 +137,7 @@ const usePrs = () => {
     return {
         isLoading,
         repositories: repositoryResponses,
+        repos: repositories,
         updatePRs,
         refreshRepositories
     }

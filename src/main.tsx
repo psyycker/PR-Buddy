@@ -8,6 +8,7 @@ import "./styles.css";
 import Home from "./routes/home";
 import Settings from "./routes/settings";
 import {PullRequestsContextProvider} from "./contexts/pull-requests-context.tsx";
+import {initPermissions} from "./utils/notifications.ts";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
         element: <Settings/>
     }
 ]);
+initPermissions();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>

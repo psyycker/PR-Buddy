@@ -4,8 +4,8 @@ import useRepositories from "./use-repositories.ts";
 import {gql, GraphQLClient} from "graphql-request";
 import {IPullRequest, IRepositoryResponse} from "../typedefs/pull-request.ts";
 import * as datefns from 'date-fns'
-import {sendNotification} from "@tauri-apps/api/notification";
 import {useInterval} from "usehooks-ts";
+import {sendNotification} from "../utils/notifications.ts";
 
 const graphqlAPIEndpoint = 'https://api.github.com/graphql';
 

@@ -140,7 +140,7 @@ const usePrs = () => {
 
     useInterval(() => {
         updatePRs();
-    }, 10000)
+    }, 600000)
 
 
     return {

@@ -1,15 +1,17 @@
-import React, {createContext, useContext} from "react";
+import React, {createContext, useContext, useState} from "react";
 import {IRepositoryResponse} from "../typedefs/pull-request.ts";
 import usePrs from "../hooks/use-prs.ts";
 
 interface IPullRequestsContext {
     repositories: IRepositoryResponse[];
-    updatePRs: () => void
+    updatePRs: () => void;
+    isLoading: boolean
 }
 
 const PullRequestsContext = createContext<IPullRequestsContext>({
     repositories: [],
-    updatePRs: () => {}
+    updatePRs: () => {},
+    isLoading:false
 });
 
 type Props = {
@@ -18,23 +20,25 @@ type Props = {
 
 export const PullRequestsContextProvider = ({children}: Props) => {
     const {isLoading, repositories, updatePRs, refreshRepositories} = usePrs()
+    const [forceLoading, setForceLoading] = useState(false);
 
     const forceUpdate = async () => {
+        setForceLoading(true);
         await refreshRepositories();
-        updatePRs();
+        await updatePRs();
+        setForceLoading(false);
     }
 
-    if (isLoading) return <div>Loading...</div>;
 
-    return <PullRequestsContext.Provider value={{repositories, updatePRs: forceUpdate}}>
+    return <PullRequestsContext.Provider value={{repositories, updatePRs: forceUpdate, isLoading: isLoading || forceLoading}}>
         {children}
     </PullRequestsContext.Provider>
 }
 
 export const useRepositoriesWithData = () => {
-    const {repositories} = useContext(PullRequestsContext);
+    const {repositories, isLoading} = useContext(PullRequestsContext);
 
-    return repositories;
+    return {repositories, isLoading};
 }
 
 export const useUpdatePrs = () => {

@@ -131,7 +131,6 @@ const usePrs = () => {
                 sendNotification(`There are ${newPRs} new PRs to review`)
             }
         }
-
     }
 
     useEffect(() => {

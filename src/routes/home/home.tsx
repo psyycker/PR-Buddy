@@ -8,19 +8,19 @@ import Header from "../../components/header";
 
 const Home = () => {
     const [selectedTab, setSelectedTab] = useState<'All' | string>('All')
-    const repositories = useRepositoriesWithData()
+    const {repositories, isLoading} = useRepositoriesWithData()
     const {content} = useTabContent(selectedTab, repositories);
 
 
     return (
         <Container>
-            <Header actionButtonLabel="Settings" actionButtonDest="/settings"/>
+            <Header actionButtonLabel="Settings" actionButtonDest="/settings" allowRefresh/>
             <Tabs onClick={setSelectedTab} selectedTab={selectedTab} tabs={repositories.map(pr => ({
                 url: pr.repository.url,
                 owner: pr.repository.owner.login,
                 repo: pr.repository.name
             }))}/>
-            <Content pullRequests={content}/>
+            <Content isLoading={isLoading} pullRequests={content}/>
         </Container>
     )
 };

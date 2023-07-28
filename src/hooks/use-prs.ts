@@ -27,13 +27,6 @@ const isApproved = (reviews: {state: string}[]) => {
     }, 0) < 2
 }
 
-const sort = (a: IPullRequest, b: IPullRequest): number => {
-    const mostRecentEditionA = new Date(a.lastEditedAt || a.createdAt)
-    const mostREcentEditionB = new Date(b.lastEditedAt || b.createdAt)
-
-    return isBefore(mostRecentEditionA, mostREcentEditionB) ? 1 : -1
-}
-
 const isDraft = (pullRequest: IPullRequest) => {
     return pullRequest.isDraft
 }
@@ -117,7 +110,6 @@ const usePrs = () => {
                 .nodes
                 .filter(node => isApproved(node.reviews.nodes))
                 .filter(node => !isDraft(node))
-                .sort(sort)
         }
         setRepositoryResponses(allData)
         if (lastCheckDate == null) {

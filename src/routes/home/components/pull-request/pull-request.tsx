@@ -17,15 +17,26 @@ const {format} = dateFns;
 type Props = {
     pullRequest: IPullRequest;
 }
+
+const DATE_FORMAT = 'dd-MM-yyyy hh:mm'
 const PullRequest = ({pullRequest}: Props) => {
 
     const onClick = () => {
         open(pullRequest.url)
     }
 
-    const mostRecentEditionDate = useMemo(() => {
-        const date = new Date(pullRequest.lastEditedAt || pullRequest.createdAt);
-        return format(date, 'dd-MM-yyyy hh:mm')
+    const editionOrCreationDate = useMemo(() => {
+        if (pullRequest.lastEditedAt) {
+            return {
+                creation: false,
+                date: format(new Date(pullRequest.lastEditedAt), DATE_FORMAT)
+            }
+        } else {
+            return {
+                creation: true,
+                date: format(new Date(pullRequest.createdAt), DATE_FORMAT)
+            }
+        }
     },[pullRequest])
 
     const approvalsCount = useMemo(() => {
@@ -35,7 +46,6 @@ const PullRequest = ({pullRequest}: Props) => {
     }, [pullRequest])
 
     const commentsCount = useMemo(() => {
-        console.log(pullRequest)
         return pullRequest.reviews.nodes.reduce((acc, review): number => {
             return acc + (review.state === 'COMMENTED' ? 1 : 0)
         }, 0);
@@ -48,7 +58,7 @@ const PullRequest = ({pullRequest}: Props) => {
                     {pullRequest.title}
                 </Title>
                 <Author> by {pullRequest.author.login}</Author>
-                <LastModified>Last modified: {mostRecentEditionDate}</LastModified>
+                <LastModified>{editionOrCreationDate.creation ? 'Created on' : 'Last edited on'}: {editionOrCreationDate.date}</LastModified>
             </UpSideContainer>
             <Separator/>
             <SideBySideContainer>

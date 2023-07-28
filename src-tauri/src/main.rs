@@ -5,10 +5,6 @@ use tauri::{SystemTray, SystemTrayMenu, SystemTrayEvent};
 use tauri::Manager;
 use tauri_plugin_positioner::{Position, WindowExt};
 
-extern {
-    fn LSSetApplicationHidden(hidden: bool);
-}
-
 fn main() {
     let system_tray_menu = SystemTrayMenu::new();
     let app = tauri::Builder::default()

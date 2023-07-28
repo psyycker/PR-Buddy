@@ -1,12 +1,13 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use tauri::{SystemTray, SystemTrayMenu, SystemTrayEvent};
+use tauri::{SystemTray, SystemTrayMenu, SystemTrayEvent, CustomMenuItem};
 use tauri::Manager;
 use tauri_plugin_positioner::{Position, WindowExt};
 
 fn main() {
-    let system_tray_menu = SystemTrayMenu::new();
+    let quit = CustomMenuItem::new("quit".to_string(), "Quit").accelerator("Cmd+Q");
+    let system_tray_menu = SystemTrayMenu::new().add_item(quit);
     let app = tauri::Builder::default()
         .plugin(tauri_plugin_positioner::init())
         .system_tray(SystemTray::new().with_menu(system_tray_menu))
@@ -27,6 +28,12 @@ fn main() {
                         window.show().unwrap();
                         window.set_focus().unwrap();
                     }
+                }
+                SystemTrayEvent::MenuItemClick {id, ..} => match id.as_str() {
+                    "quit" => {
+                        std::process::exit(0)
+                    }
+                    _ => {}
                 }
                 _ => {}
             }

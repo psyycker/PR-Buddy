@@ -7,7 +7,7 @@ import { useConfig } from 'contexts/config-context';
 import { sendNotification } from 'utils/notifications';
 import { type IPullRequest, type IRepositoryResponse } from 'types/pull-request';
 import { useRepositories } from 'contexts/repositories-context';
-import useToken from './use-token';
+import { all } from 'axios';
 
 const graphqlAPIEndpoint = 'https://api.github.com/graphql';
 
@@ -39,13 +39,12 @@ const countNewPRs = (repositoriesList: IRepositoryResponse[], lastCheckedDate: D
 };
 
 const usePrs = () => {
-  const { token, isLoading: isTokenLoading } = useToken();
-  const { isLoading: isConfigLoading } = useConfig();
+  const { githubToken: token, isLoading: isTokenLoading } = useConfig();
   const { enabledRepositories: repositories, isLoading: isRepositoriesLoading } = useRepositories();
   const [repositoryResponses, setRepositoryResponses] = useState<IRepositoryResponse[]>([]);
   const [lastCheckDate, setLastCheckDate] = useState<undefined|Date>();
 
-  const isLoading = isTokenLoading || isConfigLoading || isRepositoriesLoading;
+  const isLoading = isTokenLoading || isRepositoriesLoading;
 
   const updatePRs = useCallback(async (): Promise<void> => {
     if (token == null) return;

@@ -31,6 +31,9 @@ const ConfigContextProvider = ({ children }: Props) => {
   const sendEvent = useEvent(CONFIG_CHANGE_EVENT, async () => {
     const config = await getAppConfig();
     setGithubToken(config.githubToken);
+    if (isLoading) {
+      setIsLoading(false);
+    }
   });
 
   useEffect(() => {
@@ -42,11 +45,12 @@ const ConfigContextProvider = ({ children }: Props) => {
 
   const setToken = (newToken: string) => {
     getAppConfig().then(async (config) => {
-      config.githubToken = newToken;
-      await saveAppConfig(config);
+      const newConfig = { ...config };
+      newConfig.githubToken = newToken;
+      await saveAppConfig(newConfig);
       sendEvent();
       setGithubToken(newToken);
-    });
+    }).catch((err) => { console.error(err); });
   };
 
   return (

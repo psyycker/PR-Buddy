@@ -3,7 +3,6 @@ import React from 'react';
 import AddRepo from 'features/add-repo';
 import type IRepository from 'types/repositories';
 import { useRepositoriesActions } from 'contexts/repositories-context';
-import { Title } from './create-repository-modal.styled';
 
 interface Props {
   show: boolean;
@@ -21,7 +20,7 @@ const CreateRepositoryModal: React.FC<Props> = ({ show, close }: Props) => {
     <Modal
       size="sm"
       style={{ height: 300 }}
-      title={<Title>Add a new repository</Title>}
+      title="Add a new repository"
       styles={{
         inner: {
           paddingRight: '0 !important',

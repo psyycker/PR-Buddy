@@ -1,15 +1,15 @@
-import { Container } from './github-token-settings-tab.styled.tsx';
 import { useInputState } from '@mantine/hooks';
-import { useConfig } from 'contexts/config-context.tsx';
-import { useEffect } from 'react';
+import { useConfig } from 'contexts/config-context';
+import { type FC, useEffect } from 'react';
 import { Button, TextInput } from '@mantine/core';
+import { Container } from './github-token-settings-tab.styled.tsx';
 
-const GithubTokenSettingsTab = () => {
+const GithubTokenSettingsTab: FC = () => {
   const { githubToken, setGithubToken } = useConfig();
   const [token, setToken] = useInputState<string>('');
 
   useEffect(() => {
-    setToken(githubToken);
+    setToken(githubToken || '');
   }, [githubToken]);
 
   const confirmClick = () => {

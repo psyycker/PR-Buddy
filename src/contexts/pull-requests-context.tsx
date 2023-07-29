@@ -34,7 +34,6 @@ export const PullRequestsContextProvider: FC<Props> = ({ children }: Props) => {
   const [forceLoading, setForceLoading] = useState(false);
 
   const forceUpdate = useCallback(async (): Promise<void> => {
-    console.log('coming');
     setForceLoading(true);
     await updatePRs();
     setForceLoading(false);

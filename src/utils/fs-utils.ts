@@ -16,8 +16,8 @@ let checkDone = false;
 const getFs = async (): Promise<typeof FsType> => {
   const { fs } = await import('@tauri-apps/api');
   const baseUrl = await getBaseUrl();
-  const exists = await fs.exists(baseUrl);
   if (!checkDone) {
+    const exists = await fs.exists(baseUrl);
     if (!exists) {
       await fs.createDir(baseUrl);
     }

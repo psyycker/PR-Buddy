@@ -47,6 +47,9 @@ export const RepositoriesContextProvider: FC<IProps> = ({ children }: IProps) =>
     if (config.repositories) {
       setRepositories(config.repositories);
     }
+    if (isLoading) {
+      setIsLoading(false);
+    }
   });
 
   useEffect(() => {
@@ -64,7 +67,7 @@ export const RepositoriesContextProvider: FC<IProps> = ({ children }: IProps) =>
       if (newData.repositories == null) {
         newData.repositories = [];
       }
-      newData.repositories = [...data.repositories, repo];
+      newData.repositories = [...newData.repositories, { ...repo, enabled: true }];
       await saveAppConfig(newData);
       sendEvent();
       setRepositories(newData.repositories);

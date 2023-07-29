@@ -1,4 +1,4 @@
-import {IPullRequest} from "../../../../typedefs/pull-request.ts";
+import {IPullRequest} from "../../../../types/pull-request.ts";
 import {LoadingOverlay} from "@mantine/core";
 import {Container} from "./content.styled.tsx";
 import PullRequest from "../pull-request";

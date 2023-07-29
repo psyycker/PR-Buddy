@@ -1,4 +1,4 @@
-import {IPullRequest} from "../../../../typedefs/pull-request.ts";
+import {IPullRequest} from "../../../../types/pull-request.ts";
 import { open } from '@tauri-apps/api/shell';
 import {
     Container,

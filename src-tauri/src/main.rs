@@ -7,7 +7,11 @@ use tauri_plugin_positioner::{Position, WindowExt};
 
 fn main() {
     let quit = CustomMenuItem::new("quit".to_string(), "Quit").accelerator("Cmd+Q");
-    let system_tray_menu = SystemTrayMenu::new().add_item(quit);
+    let settings = CustomMenuItem::new("settings".to_string(), "Settings").accelerator("Cmd+,");
+    let system_tray_menu = SystemTrayMenu::new()
+        .add_item(settings)
+        .add_native_item(tauri::SystemTrayMenuItem::Separator)
+        .add_item(quit);
     let app = tauri::Builder::default()
         .plugin(tauri_plugin_positioner::init())
         .system_tray(SystemTray::new().with_menu(system_tray_menu))
@@ -33,6 +37,11 @@ fn main() {
                     "quit" => {
                         std::process::exit(0)
                     }
+                    "settings" => {
+                        let settings_window = app.get_window("settings").unwrap();
+                        settings_window.show();
+                        settings_window.set_focus();
+                    }
                     _ => {}
                 }
                 _ => {}
@@ -42,8 +51,15 @@ fn main() {
             tauri::WindowEvent::Focused(is_focused) => {
                 // detect click outside of the focused window and hide the app
                 if !is_focused {
-                    event.window().hide().unwrap();
+                    let label = event.window().label();
+                    if label == "main" {
+                        event.window().hide().unwrap();
+                    }
                 }
+            }
+            tauri::WindowEvent::CloseRequested {api, ..} => {
+                api.prevent_close();
+                event.window().hide().unwrap();
             }
             _ => {}
         });

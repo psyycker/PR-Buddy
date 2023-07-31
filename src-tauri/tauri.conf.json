@@ -49,6 +49,7 @@
     "macOSPrivateApi": true,
     "windows": [
       {
+        "label": "main",
         "fullscreen": false,
         "height": 800,
         "resizable": false,
@@ -59,6 +60,34 @@
         "decorations": false,
         "focus": false,
         "transparent": true
+      },
+      {
+        "label": "settings",
+        "url": "/settings",
+        "title": "Settings",
+        "fullscreen": false,
+        "height": 600,
+        "resizable": true,
+        "width": 800,
+        "visible": false,
+        "hiddenTitle": false,
+        "decorations": true,
+        "focus": false,
+        "transparent": false
+      },
+      {
+        "label": "wizard",
+        "url": "/wizard",
+        "title": "Welcome to PR-Buddy",
+        "fullscreen": false,
+        "height": 600,
+        "resizable": true,
+        "width": 800,
+        "visible": false,
+        "hiddenTitle": false,
+        "decorations": true,
+        "focus": false,
+        "transparent": false
       }
     ]
   }

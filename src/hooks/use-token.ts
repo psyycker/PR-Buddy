@@ -1,18 +1,18 @@
-import {useEffect, useState} from "react";
-import {getAppConfig} from "../utils/fs-utils.ts";
+import { useEffect, useState } from 'react';
+import { getAppConfig } from 'utils/fs-utils';
 
 const useToken = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [token, setToken] = useState<undefined|string>();
+  const [isLoading, setIsLoading] = useState(true);
+  const [token, setToken] = useState<undefined|string>();
 
-    useEffect(() => {
-        getAppConfig().then(data => {
-            setToken(data.githubToken)
-            setIsLoading(false);
-        })
-    }, [])
+  useEffect(() => {
+    getAppConfig().then((data) => {
+      setToken(data.githubToken);
+      setIsLoading(false);
+    });
+  }, []);
 
-    return {token, isLoading}
-}
+  return { token, isLoading };
+};
 
-export default useToken
+export default useToken;

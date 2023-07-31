@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import * as path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
@@ -17,4 +18,19 @@ export default defineConfig(async () => ({
   // 3. to make use of `TAURI_DEBUG` and other env variables
   // https://tauri.studio/v1/api/config#buildconfig.beforedevcommand
   envPrefix: ["VITE_", "TAURI_"],
+  resolve: {
+    extensions: ['.ts', '.tsx'],
+    alias: {
+      features: `${path.resolve(__dirname, "./src/features/")}`,
+      types: `${path.resolve(__dirname, "./src/types/")}`,
+      hooks: `${path.resolve(__dirname, "./src/hooks/")}`,
+      components: `${path.resolve(__dirname, "./src/components/")}`,
+      routes: `${path.resolve(__dirname, "./src/routes/")}`,
+      contexts: `${path.resolve(__dirname, "./src/contexts/")}`,
+      utils: `${path.resolve(__dirname, "./src/utils/")}`,
+      modals: `${path.resolve(__dirname, "./src/modals/")}`,
+      constants: `${path.resolve(__dirname, "./src/constants/")}`,
+      wrappers: `${path.resolve(__dirname, "./src/wrappers/")}`,
+    },
+  },
 }));

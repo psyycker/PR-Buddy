@@ -2,7 +2,7 @@ import { useInputState } from '@mantine/hooks';
 import { useConfig } from 'contexts/config-context';
 import { type FC, useEffect } from 'react';
 import { Button, TextInput } from '@mantine/core';
-import { Container } from './github-token-settings-tab.styled.tsx';
+import { Container } from './github-token-settings-tab.styled';
 
 const GithubTokenSettingsTab: FC = () => {
   const { githubToken, setGithubToken } = useConfig();
@@ -12,7 +12,7 @@ const GithubTokenSettingsTab: FC = () => {
     setToken(githubToken || '');
   }, [githubToken]);
 
-  const confirmClick = () => {
+  const confirmClick = (): void => {
     setGithubToken(token);
   };
 

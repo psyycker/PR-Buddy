@@ -1,3 +1,4 @@
+import { DEFAULT_APP_CONFIG } from 'constants/config.ts';
 import type { fs as FsType } from '@tauri-apps/api';
 import type IAppConfig from '../types/app-config';
 
@@ -22,7 +23,10 @@ const getFs = async (): Promise<typeof FsType> => {
       await fs.createDir(baseUrl);
     }
     if (!(await fs.exists(await getAppConfigUrl()))) {
-      await fs.writeTextFile(await getAppConfigUrl(), '{}');
+      await fs.writeTextFile(
+        await getAppConfigUrl(),
+        JSON.stringify(DEFAULT_APP_CONFIG, undefined, 2),
+      );
     }
     checkDone = true;
   }

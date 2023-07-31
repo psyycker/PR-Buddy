@@ -30,6 +30,7 @@ export default defineConfig(async () => ({
       utils: `${path.resolve(__dirname, "./src/utils/")}`,
       modals: `${path.resolve(__dirname, "./src/modals/")}`,
       constants: `${path.resolve(__dirname, "./src/constants/")}`,
+      wrappers: `${path.resolve(__dirname, "./src/wrappers/")}`,
     },
   },
 }));

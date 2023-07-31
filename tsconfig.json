@@ -28,7 +28,8 @@
       "contexts/*": ["./src/contexts/*"],
       "utils/*": ["./src/utils/*"],
       "modals/*": ["./src/modals/*"],
-      "constants/*": ["./src/constants/*"]
+      "constants/*": ["./src/constants/*"],
+      "wrappers/*": ["./src/wrappers/*"]
     }
   },
   "include": ["src"],

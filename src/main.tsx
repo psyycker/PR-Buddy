@@ -9,6 +9,7 @@ import ConfigContextProvider from 'contexts/config-context';
 import { RepositoriesContextProvider } from 'contexts/repositories-context';
 import Wizard from 'routes/wizard';
 import WizardInitWrapper from 'wrappers/wizard-init-wrapper';
+import AuthorizationWrapper from 'wrappers/authorization-wrapper.tsx';
 import Home from './routes/home';
 import { PullRequestsContextProvider } from './contexts/pull-requests-context';
 import { initPermissions } from './utils/notifications';
@@ -34,14 +35,16 @@ initPermissions().catch((err) => {
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <WizardInitWrapper>
-      <ConfigContextProvider>
-        <RepositoriesContextProvider>
-          <PullRequestsContextProvider>
-            <RouterProvider router={router} />
-          </PullRequestsContextProvider>
-        </RepositoriesContextProvider>
-      </ConfigContextProvider>
-    </WizardInitWrapper>
+    <AuthorizationWrapper>
+      <WizardInitWrapper>
+        <ConfigContextProvider>
+          <RepositoriesContextProvider>
+            <PullRequestsContextProvider>
+              <RouterProvider router={router} />
+            </PullRequestsContextProvider>
+          </RepositoriesContextProvider>
+        </ConfigContextProvider>
+      </WizardInitWrapper>
+    </AuthorizationWrapper>
   </React.StrictMode>,
 );

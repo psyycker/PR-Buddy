@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type FC, useState } from 'react';
 import { useRepositoriesWithData } from 'contexts/pull-requests-context';
 import EmptyContent from 'features/empty-content';
 import useTabContent from 'hooks/use-tab-content';
@@ -7,12 +7,12 @@ import { Container } from './home.styled.tsx';
 import Tabs from './components/tabs';
 import Content from './components/content';
 
-const Home = () => {
+const Home: FC = () => {
   const [selectedTab, setSelectedTab] = useState<'All' | string>('All');
   const { repositories, isLoading } = useRepositoriesWithData();
   const { content } = useTabContent(selectedTab, repositories);
 
-  if (content.length === 0) return <EmptyContent />;
+  if (repositories.length === 0) return <EmptyContent />;
 
   return (
     <Container>

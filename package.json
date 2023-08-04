@@ -15,7 +15,6 @@
     "@mantine/hooks": "^6.0.17",
     "@tabler/icons-react": "^2.30.0",
     "@tauri-apps/api": "^1.4.0",
-    "axios": "^1.4.0",
     "date-fns": "^2.30.0",
     "graphql": "^16.7.1",
     "graphql-request": "^6.1.0",
@@ -27,7 +26,6 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.4.0",
-    "@types/axios": "^0.14.0",
     "@types/date-fns": "^2.6.0",
     "@types/node": "^20.4.5",
     "@types/react": "^18.2.15",

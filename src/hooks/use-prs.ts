@@ -7,7 +7,6 @@ import { useConfig } from 'contexts/config-context';
 import { sendNotification } from 'utils/notifications';
 import { type IPullRequest, type IRepositoryResponse } from 'types/pull-request';
 import { useRepositories } from 'contexts/repositories-context';
-import { all } from 'axios';
 
 const graphqlAPIEndpoint = 'https://api.github.com/graphql';
 

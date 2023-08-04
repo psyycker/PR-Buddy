@@ -8,6 +8,7 @@ export const Container = styled.div`
   border-bottom: 1px solid white;
   position: fixed;
   margin-top: 50px;
+  background-color: white;
 `;
 
 const selectedTabStyle = css`

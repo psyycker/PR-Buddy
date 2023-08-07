@@ -26,6 +26,6 @@ PR Buddy is a companion that gives your more visibility over the pull requests t
 
 
 ## Planned features
-See [Trello board](https://trello.com/b/0sKzFUmY/pr-buddy-roadmap)
+See [Trello Board](https://trello.com/b/0sKzFUmY/pr-buddy-roadmap)
 
 If you have any more suggestion, create an issue or contribute!

@@ -9,7 +9,7 @@ import ConfigContextProvider from 'contexts/config-context';
 import { RepositoriesContextProvider } from 'contexts/repositories-context';
 import Wizard from 'routes/wizard';
 import WizardInitWrapper from 'wrappers/wizard-init-wrapper';
-import AuthorizationWrapper from 'wrappers/authorization-wrapper.tsx';
+import AuthorizationWrapper from 'wrappers/authorization-wrapper';
 import Home from './routes/home';
 import { PullRequestsContextProvider } from './contexts/pull-requests-context';
 import { initPermissions } from './utils/notifications';

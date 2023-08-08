@@ -10,6 +10,17 @@
     "productName": "PR-Buddy",
     "version": "0.2.0"
   },
+  "updater": {
+    "active": true,
+    "dialog": false,
+    "windows": {
+      "installMode": "passive"
+    },
+    "endpoints": [
+      ""
+    ],
+    "pubkey": "./prbuddy.key.pub"
+  },
   "tauri": {
     "allowlist": {
       "fs": {

@@ -18,15 +18,9 @@ const getGraphQLClient = (token: string) => new GraphQLClient(graphqlAPIEndpoint
   },
 });
 
-export const isApproved = (pr: IPullRequest, reviews: IReview[], threshold: number) => {
+export const isApproved = (reviews: IReview[], threshold: number) => {
   if (threshold === 0) return false;
   const approvedPrs = reviews.filter((review) => review.state === 'APPROVED');
-  if (pr.number === 4511) {
-    console.log(pr);
-    console.log(approvedPrs);
-    console.log(threshold);
-    console.log(approvedPrs.length >= threshold);
-  }
   return approvedPrs.length >= threshold;
 };
 
@@ -81,9 +75,12 @@ const usePrs = () => {
         .repository
         .pullRequests
         .nodes
-        .filter((node) => isTooOld(generalConfig.filterOlderThanDays, node))
-        .filter((node) => !isApproved(node, node.reviews.nodes, generalConfig.hideAfterApprovals))
-        .filter((node) => !isDraft(node));
+        .filter((node: IPullRequest) => isTooOld(generalConfig.filterOlderThanDays, node))
+        .filter((node: IPullRequest) => !isApproved(
+          node.reviews.nodes,
+          generalConfig.hideAfterApprovals,
+        ))
+        .filter((node: IPullRequest) => !isDraft(node));
     }
     setRepositoryResponses(allData);
     if (lastCheckDate == null) {

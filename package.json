@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "tauri": "tauri",
     "build:mac": "tauri build --target universal-apple-darwin",
-    "build:windows": "tauri build"
+    "build:windows": "tauri build",
+    "test": "jest"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

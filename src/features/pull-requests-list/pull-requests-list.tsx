@@ -1,4 +1,4 @@
-import React, { type FC, forwardRef, useMemo } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import { type IPullRequest } from 'types/pull-request';
 import * as dateFns from 'date-fns';
 import PullRequest from './components/pull-request';

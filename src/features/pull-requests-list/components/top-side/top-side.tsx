@@ -1,7 +1,9 @@
 import { ActionIcon, Badge, createStyles } from '@mantine/core';
 import { IconExternalLink, IconMessage, IconThumbUpFilled } from '@tabler/icons-react';
 import { type IPullRequest } from 'types/pull-request';
-import { type FC, useMemo } from 'react';
+import React, {
+  type FC, useMemo,
+} from 'react';
 import { open } from '@tauri-apps/api/shell';
 import * as dateFns from 'date-fns';
 import {
@@ -33,7 +35,7 @@ const DATE_FORMAT = 'dd-MM-yyyy hh:mm';
 const TopSide: FC<Props> = ({ pullRequest }) => {
   const { classes } = useStyle();
 
-  const onClick = (e): void => {
+  const onClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
     e.stopPropagation();
     open(pullRequest.url);

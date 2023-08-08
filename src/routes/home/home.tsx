@@ -1,21 +1,38 @@
-import { type FC, useState } from 'react';
+import {
+  type FC,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useRepositoriesWithData } from 'contexts/pull-requests-context';
 import EmptyContent from 'features/empty-content';
 import useTabContent from 'hooks/use-tab-content';
 import Header from 'components/header';
-import { Container } from './home.styled.tsx';
+import PullRequestsList from 'features/pull-requests-list';
+import { LoadingOverlay } from '@mantine/core';
+import { Container } from './home.styled';
 import Tabs from './components/tabs';
-import Content from './components/content';
 
 const Home: FC = () => {
+  const headerRef = useRef<HTMLDivElement>(null);
   const [selectedTab, setSelectedTab] = useState<'All' | string>('All');
   const { repositories, isLoading } = useRepositoriesWithData();
   const { content } = useTabContent(selectedTab, repositories);
 
-  if (repositories.length === 0) return <EmptyContent />;
+  useEffect(() => {
+    if (isLoading) {
+      headerRef.current?.scrollIntoView({
+        block: 'center',
+        behavior: 'smooth',
+      });
+    }
+  }, [isLoading]);
+
+  if (repositories.length === 0 && !isLoading) return <EmptyContent />;
 
   return (
     <Container>
+      <LoadingOverlay visible={isLoading} overlayBlur={2} />
       <Header canRefresh />
       <Tabs
         onClick={setSelectedTab}
@@ -26,7 +43,7 @@ const Home: FC = () => {
           repo: pr.repository.name,
         }))}
       />
-      <Content isLoading={isLoading} pullRequests={content} />
+      <PullRequestsList ref={headerRef} pullRequests={content} />
     </Container>
   );
 };

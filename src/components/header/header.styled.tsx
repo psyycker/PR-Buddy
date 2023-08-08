@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
@@ -8,6 +8,7 @@ export const Container = styled.div`
   position: fixed;
   color: #339bf0;
   background-color: #0f0f0f;
+  z-index: 3;
 `;
 
 export const SubContainer = styled.div`
@@ -16,7 +17,7 @@ export const SubContainer = styled.div`
   height: 100%;
   position: relative;
   align-items: center;
-`
+`;
 
 export const Title = styled.h1`
   position: absolute;

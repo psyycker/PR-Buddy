@@ -1,16 +1,16 @@
-import { PULL_REQUESTS_QUERY } from 'constants/graphql.ts';
+import { PULL_REQUESTS_QUERY } from 'constants/graphql';
 import { useCallback, useEffect, useState } from 'react';
 import { GraphQLClient } from 'graphql-request';
 import * as datefns from 'date-fns';
 import { useInterval } from 'usehooks-ts';
 import { useConfig } from 'contexts/config-context';
 import { sendNotification } from 'utils/notifications';
-import { type IPullRequest, type IRepositoryResponse } from 'types/pull-request';
+import { type IPullRequest, type IRepositoryResponse, type IReview } from 'types/pull-request';
 import { useRepositories } from 'contexts/repositories-context';
 
 const graphqlAPIEndpoint = 'https://api.github.com/graphql';
 
-const { isBefore } = datefns;
+const { isBefore, subDays } = datefns;
 
 const getGraphQLClient = (token: string) => new GraphQLClient(graphqlAPIEndpoint, {
   headers: {
@@ -18,9 +18,24 @@ const getGraphQLClient = (token: string) => new GraphQLClient(graphqlAPIEndpoint
   },
 });
 
-const isApproved = (reviews: Array<{state: string}>) =>
-// TODO: Add a setting to determine the approval of a repo
-  reviews.reduce((acc, review) => acc + (review.state === 'APPROVED' ? 1 : 0), 0) < 2;
+export const isApproved = (pr: IPullRequest, reviews: IReview[], threshold: number) => {
+  if (threshold === 0) return false;
+  const approvedPrs = reviews.filter((review) => review.state === 'APPROVED');
+  if (pr.number === 4511) {
+    console.log(pr);
+    console.log(approvedPrs);
+    console.log(threshold);
+    console.log(approvedPrs.length >= threshold);
+  }
+  return approvedPrs.length >= threshold;
+};
+
+const isTooOld = (days: number, pullRequest: IPullRequest) => {
+  if (days === 0) return true;
+  const prDate = new Date(pullRequest.lastEditedAt || pullRequest.createdAt);
+  const maxDate = subDays(new Date(), days);
+  return !isBefore(prDate, maxDate);
+};
 
 const isDraft = (pullRequest: IPullRequest) => pullRequest.isDraft;
 
@@ -38,8 +53,9 @@ const countNewPRs = (repositoriesList: IRepositoryResponse[], lastCheckedDate: D
 };
 
 const usePrs = () => {
-  const { githubToken: token, isLoading: isTokenLoading } = useConfig();
+  const { githubToken: token, isLoading: isTokenLoading, generalConfig } = useConfig();
   const { enabledRepositories: repositories, isLoading: isRepositoriesLoading } = useRepositories();
+  const [isPrLoading, setIsPrLoading] = useState(false);
   const [repositoryResponses, setRepositoryResponses] = useState<IRepositoryResponse[]>([]);
   const [lastCheckDate, setLastCheckDate] = useState<undefined|Date>();
 
@@ -48,6 +64,7 @@ const usePrs = () => {
   const updatePRs = useCallback(async (): Promise<void> => {
     if (token == null) return;
     if (repositories == null) return;
+    setIsPrLoading(true);
     const graphQLClient = getGraphQLClient(token);
     const allData: IRepositoryResponse[] = [];
 
@@ -64,7 +81,8 @@ const usePrs = () => {
         .repository
         .pullRequests
         .nodes
-        .filter((node) => isApproved(node.reviews.nodes))
+        .filter((node) => isTooOld(generalConfig.filterOlderThanDays, node))
+        .filter((node) => !isApproved(node, node.reviews.nodes, generalConfig.hideAfterApprovals))
         .filter((node) => !isDraft(node));
     }
     setRepositoryResponses(allData);
@@ -79,7 +97,8 @@ const usePrs = () => {
         sendNotification(`There are ${newPRs} new PRs to review`);
       }
     }
-  }, [token, repositories]);
+    setIsPrLoading(false);
+  }, [token, repositories, generalConfig]);
 
   useEffect(() => {
     if (token && !isLoading) updatePRs();
@@ -90,7 +109,7 @@ const usePrs = () => {
   }, 600000);
 
   return {
-    isLoading,
+    isLoading: isLoading || isPrLoading,
     repositories: repositoryResponses,
     updatePRs,
   };

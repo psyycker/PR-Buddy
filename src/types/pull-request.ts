@@ -1,3 +1,12 @@
+export interface IReview {
+    state: 'APPROVED' | 'COMMENTED' | string;
+    lastEditedAt: string;
+    createdAt: string;
+    author: {
+        login: string
+    }
+}
+
 export interface IPullRequest {
     number: number;
     title: string;
@@ -9,15 +18,9 @@ export interface IPullRequest {
         login: string;
     }
     reviews: {
-        nodes: {
-            state: string;
-            author: {
-                login: string
-            }
-        }[]
+        nodes: IReview[]
     }
 }
-
 
 export interface IRepositoryResponse {
     repository: {

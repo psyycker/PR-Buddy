@@ -26,6 +26,8 @@ export const PULL_REQUESTS_QUERY = gql`
                     reviews(first: 100) {
                         nodes {
                             state,
+                            lastEditedAt,
+                            createdAt,
                             author {
                                 login
                             }

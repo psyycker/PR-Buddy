@@ -4,7 +4,7 @@ PR Buddy is a companion that gives your more visibility over the pull requests t
 ![Mainview](./assets/main-view.png?raw=true "Main view")
 
 ## Setup
-### Generate and enter a github token
+### Generate and enter a Github token
 - You'll need a github token to get your app to run. <br/>
 - Head to [the token creation page](https://github.com/settings/tokens/new) <br/>
 - Set the expiration to whatever fits you.

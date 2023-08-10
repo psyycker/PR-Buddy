@@ -1,15 +1,15 @@
 {
-  "version": "0.2.1",
+  "version": "0.2.0",
   "notes": "See the assets to download this version and install.",
-  "pub_date": "2023-08-10T16:13:20.298Z",
+  "pub_date": "2023-08-10T19:16:45.020Z",
   "platforms": {
-    "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZk9Id0d6ZCtYTklVN2tXSDhoM0dHYW1SbUlYQXVTanZBbGRmQnNzSEk1aDFyTHFvSE5rRDY0bzRTb0M4Vk43Qk5hTFdpQytXL2R0VnNJZ0V1bWpWSUdOT3IyTFNPbGdrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjkxNjgzOTg2CWZpbGU6UFItQnVkZHlfMC4yLjFfeDY0X2VuLVVTLm1zaS56aXAKZGtkUWJJSHpzRzcrdFYxNUFWVGkzU0FqNnNhQ0hHaERlRk53TjUwYTRXVDh2dGRackNPbVp6WW5iUDhZODBRZ1dxbDBpK0o5WDhvTlFwd3hZSWdEQnc9PQo=",
-      "url": "https://github.com/psyycker/PR-Buddy/releases/download/app-v0.2.1/PR-Buddy_0.2.1_x64_en-US.msi.zip"
-    },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZk9Id0d6ZCtYTkN1Mm4yYUtnbTV6ck9sWFVRQW1ITWQwWFNtd1FacTNXSEwvd0IwWlJ2RUdHbG02YkdEVGs4bUx3ZVpscExadmRDd3A2RlNqeXM4M0FlNjVKd3BQRndrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjkxNjgzOTk3CWZpbGU6UFItQnVkZHkuYXBwLnRhci5negpUMXZNd240QjBvQk02UHltUXVFN0FvM0ZEL0dMYnJuL3ZKSWJGOTlOcUl0RW9RQmsyTWY2WEhSZE8rNHNhb1hwTGlJWUwyVEFvOFRwbi9zdWVhYnBEdz09Cg==",
-      "url": "https://github.com/psyycker/PR-Buddy/releases/download/app-v0.2.1/PR-Buddy_x64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZk9Id0d6ZCtYTkRjRGxXQmtmZ0ZTUUQrM0tEUmlOcHlESnBJRFhZbEpHbFltZE1ZeTJkbVNkMXVWOENuSWU5MmI0SUthdytDbGVCdXJMczRDaExWWlAwQ0hhcnNldlFrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjkxNjk0Nzc5CWZpbGU6UFItQnVkZHkuYXBwLnRhci5negpJTkZmd0REMDNpOEM3OTkycDQ1QmoweURKa1RlanJvU2FidVVLdnNTTGJhdDgrcXphcHpkZmRNYmZxOFRocy9lbXd6OUN2Z0xDWThULzhmNW5LVnhEUT09Cg==",
+      "url": "https://github.com/psyycker/PR-Buddy/releases/download/app-v0.2.0/PR-Buddy_x64.app.tar.gz"
+    },
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZk9Id0d6ZCtYTktmU2E0TXZ0MXRDNXllTDEyY1p6T3lsaGhZNzhkUjNpSlNabHl6OTd6eStHK2ZFakNNbVE5U2FXZEoyNjBLRnZhandhZ0RSMFRPWVdFSXo4NlpVTWdzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjkxNjk0OTk3CWZpbGU6UFItQnVkZHlfMC4yLjBfeDY0X2VuLVVTLm1zaS56aXAKbEtlVHB1MU9VdWVONWRxY0wvRFRnemdSWEpRWTZQT21nVzM5WXlGTHdVUnZpM2ZhZHg3RW5pUFdFREtqRjVKaHYzNk1JL3pOakpvRWhyakJXWnBmQ0E9PQo=",
+      "url": "https://github.com/psyycker/PR-Buddy/releases/download/app-v0.2.0/PR-Buddy_0.2.0_x64_en-US.msi.zip"
     }
   }
 }

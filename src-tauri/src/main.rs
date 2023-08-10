@@ -53,7 +53,7 @@ fn main() {
                 if !is_focused {
                     let label = event.window().label();
                     if label == "main" {
-                        // event.window().hide().unwrap();
+                        event.window().hide().unwrap();
                     }
                 }
             }

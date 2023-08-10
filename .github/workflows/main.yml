@@ -62,7 +62,7 @@ jobs:
           prerelease: false
           args: '--target universal-apple-darwin'
       - name: Build tauri app (Windows)
-        if: matrix.platform == 'windows'
+        if: matrix.platform == 'windows-latest'
         uses: tauri-apps/tauri-action@v0
         with:
           tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version

@@ -51,13 +51,22 @@ jobs:
         run: rustup target add aarch64-apple-darwin
       - name: install frontend dependencies
         run: npm install # change this to npm or pnpm depending on which one you usep
-      - name: Build tauri app
+      - name: Build tauri app (Mac)
         uses: tauri-apps/tauri-action@v0
+        if: matrix.platform == 'macos-latest'
         with:
           tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
           releaseName: 'v__VERSION__'
           releaseBody: 'Bug fixes and improvements!'
           releaseDraft: true
           prerelease: false
-          if: matrix.platform == 'macos-latest'
           args: '--target universal-apple-darwin'
+      - name: Build tauri app (Windows)
+        uses: tauri-apps/tauri-action@v0
+        if: matrix.platform == 'windows'
+        with:
+          tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
+          releaseName: 'v__VERSION__'
+          releaseBody: 'Bug fixes and improvements!'
+          releaseDraft: true
+          prerelease: false

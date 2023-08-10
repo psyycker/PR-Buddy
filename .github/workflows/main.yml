@@ -30,7 +30,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        platform: [macos-latest, windows-latest, macos-latest-arm64] # ubuntu-20.04, not supported yet
+        platform: [macos-latest, windows-latest] # ubuntu-20.04, not supported yet
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -53,6 +53,8 @@ jobs:
         with:
           tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
           releaseName: 'v__VERSION__'
-          releaseBody: 'See the assets to download this version and install.'
+          releaseBody: 'Bug fixes and improvements!'
           releaseDraft: true
           prerelease: false
+          if: matrix.platform == 'macos-latest'
+          args: '--target universal-apple-darwin'

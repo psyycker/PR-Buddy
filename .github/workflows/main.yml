@@ -9,22 +9,22 @@ env:
   TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
 
 jobs:
-#  tests:
-#    permissions:
-#      contents: read
-#    runs-on: macos-latest
-#    steps:
-#      - uses: actions/checkout@v3
-#      - name: setup node
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: 18
-#      - name: install frontend dependencies
-#        run: npm ci
-#      - name: Running tests
-#        run: npm run test
+  tests:
+    permissions:
+      contents: read
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: install frontend dependencies
+        run: npm ci
+      - name: Running tests
+        run: npm run test
   publish-tauri:
-#    needs: tests
+    needs: tests
     permissions:
       contents: write
     strategy:

@@ -52,8 +52,8 @@ jobs:
       - name: install frontend dependencies
         run: npm install # change this to npm or pnpm depending on which one you usep
       - name: Build tauri app (Mac)
-        uses: tauri-apps/tauri-action@v0
         if: matrix.platform == 'macos-latest'
+        uses: tauri-apps/tauri-action@v0
         with:
           tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
           releaseName: 'v__VERSION__'
@@ -62,8 +62,8 @@ jobs:
           prerelease: false
           args: '--target universal-apple-darwin'
       - name: Build tauri app (Windows)
-        uses: tauri-apps/tauri-action@v0
         if: matrix.platform == 'windows'
+        uses: tauri-apps/tauri-action@v0
         with:
           tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
           releaseName: 'v__VERSION__'

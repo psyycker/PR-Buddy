@@ -6,7 +6,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  TAURI_PRIVATE_KEY: "./PR-Buddy-secrets/prbuddy.key"
+  TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
 
 jobs:
 #  tests:
@@ -34,10 +34,6 @@ jobs:
 
     runs-on: ${{ matrix.platform }}
     steps:
-      - uses: actions/checkout@v3
-        with:
-          repository: psyycker/PR-Buddy-secrets
-          token: ${{ secrets.PAT_SECRETS }}
       - uses: actions/checkout@v3
       - name: setup node
         uses: actions/setup-node@v3

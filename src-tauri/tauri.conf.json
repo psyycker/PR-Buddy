@@ -13,7 +13,7 @@
   "tauri": {
     "updater": {
       "active": true,
-      "dialog": false,
+      "dialog": true,
       "windows": {
         "installMode": "passive"
       },

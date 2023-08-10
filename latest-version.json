@@ -8,7 +8,7 @@
       "url": "https://github.com/psyycker/PR-Buddy/releases/download/app-v0.2.0/PR-Buddy_x64.app.tar.gz"
     },
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZk9Id0d6ZCtYTkNQVGZZV2JpdXQvbGttWjdwMzlKUktZWG4vUVRMNnRHR0hUaGw0VlJya2J2czI2RnNOYkpGV0JnUjRXbTlXOUtqb0VjVHhSMWY2VmFiZ01KbTgzVHdnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjkxNzA1NzU4CWZpbGU6UFItQnVkZHkuYXBwLnRhci5negpxQmZ3dmt1VDRmZndXVkN1SEM3dndwUmtQWUtHaFpWajBLS29zdXhwVjgrK0NEMzRIWG9qaGhYK25oVTRmTnowbDBNT29pdHJIWDdIQW14NzB5ZVJCUT09Cg==",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTZk9Id0d6ZCtYTkJFWUZKTEdSbmc0SWJ0WkZXeUVkWE1MbmZyNDllZ0g5OXB4ZHNvN3I0L3p1VFAwTVN5UURQZ1JlcTEzREFJUUh5UVgrcXlyQ1EvcUhpYlNZOVBtaVFrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNjkxNzA2NDc4CWZpbGU6UFItQnVkZHkuYXBwLnRhci5negpxTHdPdU0xT3RaMVlPTVVhZS9PTE1SVnA5bmpMYy8xQmo0THpVN3pPOUFhdWIzNWI4UUpUZTNpV0tGeFJZYzJpK2xtZzQ0S3NrSFBpenNXOGwxMzRBZz09Cg==",
       "url": "https://github.com/psyycker/PR-Buddy/releases/download/app-v0.2.0/PR-Buddy-arm64.app.tar.gz"
     },
     "windows-x86_64": {

@@ -3,6 +3,7 @@ PR Buddy is a companion that gives your more visibility over the pull requests t
 
 ![Mainview](./assets/main-view.png?raw=true "Main view")
 
+/!\ Linux is not (yet) supported as the navbar system doesn't work the same way than it works on Windows and Macos
 ## Setup
 ### Generate and enter a Github token
 - You'll need a github token to get your app to run. <br/>
